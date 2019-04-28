@@ -11,10 +11,18 @@ class Bouton:
 class OnOff(Bouton):	
 
 	def __init__(self, nom) : 
-		Bouton.__init__(self,nom)
+		Bouton.__init__(self, nom)
 		self.actif = False
-	"""Quand je clique sur ce bouton j'active ou désactive l'appareil"""
+	
 
+	def click(self):
+		"""Quand je clique sur ce bouton j'active ou désactive l'appareil"""
+		if self.actif : 
+			self.actif = False
+		else : 
+			self.actif = True
+		return " Bouton {} : {}".format(self.nom, self.actif) 
 
-bouton_demarrer = OnOff("demarrer")
-print(bouton_demarrer)
+bouton_demarrer = OnOff("démarrer")
+print("test str - " , bouton_demarrer)
+print("test click - ", bouton_demarrer.click())
