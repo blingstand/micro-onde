@@ -1,5 +1,9 @@
 """Dans ce programme je vais créer le programme d'un micro-onde et lui faire une interface graphique. Ce module sera écrit en python en utilisant la POO"""
 
+""" 
+### je veux maintenant ajouter mon bouton minuteur
+""" 
+
 class Bouton: 
 	"""Ce sont les différents boutons sur lequel je devrai clicker poyur effectuer des actions"""
 	def __init__(self, nom): 
@@ -9,7 +13,7 @@ class Bouton:
 	def __str__(self) : 
 		return "je clique sur le bouton " + self.nom
 
-class OnOff(Bouton):	
+class Start(Bouton):	
 
 	def __init__(self, nom) : 
 		Bouton.__init__(self, nom)
@@ -27,6 +31,21 @@ class OnOff(Bouton):
 				self.actif = False
 		return " Bouton {} : {}".format(self.nom, self.actif) 
 
-start_btn = OnOff("Start")
-print("test str - " , start_btn)
+class Minuteur(Bouton):
+
+	def __init__(self, nom) : 
+		Bouton.__init__(self, nom)
+
+	def reglerTemps(self):
+		self.temps = int(input("Donnez le temps de cuisson"))
+		return self.temps
+
+start_btn = Start("Start")
+print("test str - " , start_btn)	
 print("test cuisson - ", start_btn.cuisson())
+print("- "*10)
+
+minuteur_btn = Minuteur("Minuteur")
+print("test str - " , minuteur_btn)
+print(minuteur_btn.reglerTemps())
+
