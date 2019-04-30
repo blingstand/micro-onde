@@ -4,6 +4,7 @@ class Bouton:
 	"""Ce sont les différents boutons sur lequel je devrai clicker poyur effectuer des actions"""
 	def __init__(self, nom): 
 		self.nom = nom
+		self.temps = 12	#c'est le minuteur au début il vaut 0, modif par minuteurBtn
 
 	def __str__(self) : 
 		return "je clique sur le bouton " + self.nom
@@ -15,14 +16,17 @@ class OnOff(Bouton):
 		self.actif = False
 	
 
-	def click(self):
-		"""Quand je clique sur ce bouton j'active ou désactive l'appareil"""
+	def cuisson(self):
+		"""Quand je clique sur ce bouton j'active ou désactive la cuisson"""
 		if self.actif : 
 			self.actif = False
 		else : 
-			self.actif = True
+			if self.temps > 0 : 
+				self.actif = True #fonctionne si j'ai du temps au minuteur et que la cuisson n'est pas en cours
+			else : 
+				self.actif = False
 		return " Bouton {} : {}".format(self.nom, self.actif) 
 
-bouton_demarrer = OnOff("démarrer")
-print("test str - " , bouton_demarrer)
-print("test click - ", bouton_demarrer.click())
+start_btn = OnOff("Start")
+print("test str - " , start_btn)
+print("test cuisson - ", start_btn.cuisson())
