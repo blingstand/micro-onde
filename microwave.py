@@ -1,7 +1,7 @@
 """Dans ce programme je vais créer le programme d'un micro-onde et lui faire une interface graphique. Ce module sera écrit en python en utilisant la POO"""
 
 """ 
-### j'ajoute le module temps à mon projet
+### Projet terminé :) 
 """ 
 
 import time 
