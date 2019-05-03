@@ -1,8 +1,9 @@
 from tkinter import *
-
-#bug passage dans le négatif
+from time import sleep
+#changer couleur dans micro-onde
 
 def plus():
+  int(temps_aff.get())
   temps_aff.set(int(temps_aff.get())+5)
 
 def moins():
@@ -10,13 +11,22 @@ def moins():
     temps_aff.set(int(temps_aff.get())-5)
 
 def start():
-  temps_aff.set(temps)
-
-
-
-
-
-
+  temps = int(temps_aff.get())
+  for i in range(temps, 0, -1):
+    temps_aff.set(i)
+    fenetre.update()
+    print("Cuisson en cours ... ({})".format(i))
+    sleep(1)
+  if i ==  1 :
+    for repeat in range(3):
+      temps_aff.set("FIN")
+      fenetre.update()
+      sleep(0.5)
+      temps_aff.set("")
+      fenetre.update()
+      sleep(0.5)
+    temps_aff.set(0)
+    print("Cuisson terminée")
 
 fenetre = Tk()
 fenetre.geometry("800x400")
@@ -34,7 +44,7 @@ temps_aff = StringVar()
 temps_aff.set("0")
 
 #un champ pour afficher le temps restant
-lbl_aff_temps = Label(fenetre, textvariable=temps_aff, fg="green", bg="white", font="times 80 bold")
+lbl_aff_temps = Label(fenetre, textvariable=temps_aff, fg="green", bg="black", font="times 80 bold")
 lbl_aff_temps_fen = canvas.create_window(700, 110, window=lbl_aff_temps)
 
 #un bouton + pour augmenter le temps
