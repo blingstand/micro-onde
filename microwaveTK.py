@@ -4,7 +4,7 @@ from tkinter import *
 
 
 def start():
-  pass
+  temps.set("ok")
 
 
 
