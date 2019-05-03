@@ -1,10 +1,16 @@
 from tkinter import *
 
-#réaction au clic de start, marque ok dans écran (lbl_aff_temps)
+#bug passage dans le négatif
 
+def plus():
+  temps_aff.set(int(temps_aff.get())+5)
+
+def moins():
+  if int(temps_aff.get()) > 0 :
+    temps_aff.set(int(temps_aff.get())-5)
 
 def start():
-  temps.set("ok")
+  temps_aff.set(temps)
 
 
 
@@ -24,18 +30,18 @@ canvas.create_line(600,10, 600, 380, fill="white")
 canvas.pack()
 
 # - - - - -
-temps = StringVar()
-temps.set("0")
+temps_aff = StringVar()
+temps_aff.set("0")
 
 #un champ pour afficher le temps restant
-lbl_aff_temps = Label(fenetre, textvariable=temps, fg="green", bg="white", font="times 80 bold")
+lbl_aff_temps = Label(fenetre, textvariable=temps_aff, fg="green", bg="white", font="times 80 bold")
 lbl_aff_temps_fen = canvas.create_window(700, 110, window=lbl_aff_temps)
 
 #un bouton + pour augmenter le temps
-bt_tempsP = Button(fenetre, text="+", width=7)
+bt_tempsP = Button(fenetre, text="+", width=7, command=plus)
 bt_tempsP_fen = canvas.create_window(650, 250, window=bt_tempsP)
 #un bouton - pour diminuer le temps
-bt_tempsM = Button(fenetre, text="-", width=7)
+bt_tempsM = Button(fenetre, text="-", width=7, command=moins)
 bt_tempsM_fen = canvas.create_window(750, 250, window=bt_tempsM)
 #un bouton start pour lancer la cuisson
 
